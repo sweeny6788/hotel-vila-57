@@ -168,8 +168,8 @@ function Hero() {
       <div className="absolute inset-0">
         {/* https://www.booking.com/hotel/al/vila-verde-economic.html */}
         <img
-          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=80"
-          alt="A boutique hotel at golden hour"
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=80"
+          alt="Mountain landscape at dawn"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/10 to-[#faf6f0]" />
@@ -537,55 +537,54 @@ function MapSection() {
 
   return (
     <section id="map" className="bg-[#faf6f0]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-28 pb-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24 grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
         <Reveal>
           <span className="text-xs uppercase tracking-[0.3em] text-[#b25c3a]">Find Us</span>
           <h2
-            className="mt-3 text-4xl md:text-5xl text-stone-900 max-w-2xl"
+            className="mt-3 text-4xl md:text-5xl text-stone-900 leading-tight"
             style={{ fontFamily: '"DM Serif Display", serif' }}
           >
             Drop a pin in the heart of Tirana.
           </h2>
-          <p className="mt-4 text-stone-600 max-w-xl">{HOTEL.address}</p>
+
+          <div className="mt-8 space-y-5">
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-stone-500">Address</div>
+              <p className="mt-1 text-stone-800">{HOTEL.address}</p>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-stone-500">Front Desk</div>
+              <p className="mt-1 text-stone-800">Open 24 / 7 · {HOTEL.phoneShort}</p>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-stone-500">By the Numbers</div>
+              <p className="mt-1 text-stone-800">1.1 mi to Skanderbeg Square · 9.3 mi to TIA Airport</p>
+            </div>
+          </div>
+
+          <a
+            href={directions}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#b25c3a] text-white text-sm font-medium hover:bg-stone-900 transition shadow-sm"
+          >
+            Get Directions <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </Reveal>
+
+        <Reveal delay={1} className="h-full">
+          <div className="rounded-2xl overflow-hidden shadow-md h-full min-h-[380px]">
+            <iframe
+              title="Hotel Vila 57 location on Google Maps"
+              src={embed}
+              className="w-full h-full min-h-[380px] border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
         </Reveal>
       </div>
-
-      <Reveal delay={1}>
-        <div className="relative">
-          <iframe
-            title="Hotel Vila 57 location on Google Maps"
-            src={embed}
-            className="w-full h-[40vh] md:h-[50vh] border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-3 justify-between items-center">
-            <div className="bg-white/95 backdrop-blur rounded-2xl px-5 py-4 shadow-lg flex items-center gap-3 max-w-md">
-              <div className="w-10 h-10 rounded-full bg-[#b25c3a] flex items-center justify-center text-white shrink-0">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div className="text-sm">
-                <div
-                  className="text-stone-900"
-                  style={{ fontFamily: '"DM Serif Display", serif' }}
-                >
-                  Hotel Vila 57
-                </div>
-                <div className="text-stone-600 text-xs">{HOTEL.address}</div>
-              </div>
-            </div>
-            <a
-              href={directions}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-stone-900 text-white px-5 py-3 rounded-full text-sm flex items-center gap-2 hover:bg-[#b25c3a] transition shadow-lg"
-            >
-              Get Directions <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      </Reveal>
     </section>
   );
 }
