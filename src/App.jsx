@@ -46,7 +46,7 @@ const ROOMS = [
     price: 49,
     features: ["Private balcony", "City view", "Queen bed", "Air conditioning"],
     // https://www.booking.com/hotel/al/vila-verde-economic.html
-    img: "https://picsum.photos/seed/vila57-room-double/1400/1000",
+    img: "/images/835853782.jpg",
   },
   {
     type: "Deluxe Twin Room",
@@ -57,7 +57,7 @@ const ROOMS = [
     price: 59,
     features: ["Two single beds", "En-suite bathroom", "Panoramic windows", "Workspace"],
     // https://www.booking.com/hotel/al/vila-verde-economic.html
-    img: "https://picsum.photos/seed/vila57-room-twin/1400/1000",
+    img: "/images/553067845.jpg",
   },
   {
     type: "Economy Triple Room",
@@ -68,7 +68,7 @@ const ROOMS = [
     price: 69,
     features: ["Three single beds", "Family-friendly", "Wardrobe & TV", "Air conditioning"],
     // https://www.booking.com/hotel/al/vila-verde-economic.html
-    img: "https://picsum.photos/seed/vila57-room-triple/1400/1000",
+    img: "/images/835184929.jpg",
   },
 ];
 
@@ -143,6 +143,7 @@ function Nav() {
         <nav className="hidden md:flex gap-8 text-sm text-stone-700">
           <a href="#stay" className="hover:text-[#b25c3a] transition">Stay</a>
           <a href="#amenities" className="hover:text-[#b25c3a] transition">Amenities</a>
+          <a href="#gallery" className="hover:text-[#b25c3a] transition">Gallery</a>
           <a href="#location" className="hover:text-[#b25c3a] transition">Location</a>
           <a href="#contact" className="hover:text-[#b25c3a] transition">Contact</a>
         </nav>
@@ -166,8 +167,8 @@ function Hero() {
       <div className="absolute inset-0">
         {/* https://www.booking.com/hotel/al/vila-verde-economic.html */}
         <img
-          src="https://picsum.photos/seed/vila57-hero-terrace/2000/1200"
-          alt="Hotel Vila 57 terrace overlooking Tirana"
+          src="/images/283956658.jpg"
+          alt="Hotel Vila 57 entrance lit up at night with the Bar Caffe Vila 57 sign"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/10 to-[#faf6f0]" />
@@ -273,13 +274,13 @@ function About() {
       <Reveal delay={1} className="lg:col-span-7 grid grid-cols-2 gap-4">
         {/* https://www.booking.com/hotel/al/vila-verde-economic.html */}
         <img
-          src="https://picsum.photos/seed/vila57-about-1/900/1200"
-          alt="A reading corner at Hotel Vila 57"
+          src="/images/51455577.jpg"
+          alt="The bar and lounge at Hotel Vila 57"
           className="w-full h-[28rem] object-cover rounded-2xl"
         />
         <img
-          src="https://picsum.photos/seed/vila57-about-2/900/1200"
-          alt="Coffee house interior"
+          src="/images/245720167.jpg"
+          alt="Espresso pulling from the on-site coffee house"
           className="w-full h-[28rem] object-cover rounded-2xl mt-12"
         />
       </Reveal>
@@ -429,6 +430,57 @@ function Amenities() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  GALLERY                                                            */
+/* ------------------------------------------------------------------ */
+const GALLERY = [
+  { src: "/images/215276144.jpg", alt: "Breakfast spread with croissants and fresh juices", h: "row-span-2" },
+  { src: "/images/713692504.jpg", alt: "Cappuccino and pastry from the coffee house" },
+  { src: "/images/51571422.jpg", alt: "Wine glasses hanging at the bar" },
+  { src: "/images/283955638.jpg", alt: "Vila 57 reception lobby with framed art" },
+  { src: "/images/51455605.jpg", alt: "The leather lounge in the bar caffe" },
+  { src: "/images/194347459.jpg", alt: "Champagne in an ice bucket" },
+];
+
+function Gallery() {
+  return (
+    <section id="gallery" className="bg-[#faf6f0]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-28">
+        <Reveal className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <span className="text-xs uppercase tracking-[0.3em] text-[#b25c3a]">Life at Vila 57</span>
+            <h2
+              className="mt-3 text-4xl md:text-5xl text-stone-900 max-w-2xl"
+              style={{ fontFamily: '"DM Serif Display", serif' }}
+            >
+              The small moments that make a stay.
+            </h2>
+          </div>
+          <p className="max-w-md text-stone-600">
+            Mornings at the coffee house, evenings at the bar, and the slow stretch of time in
+            between.
+          </p>
+        </Reveal>
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 auto-rows-[14rem] md:auto-rows-[16rem] gap-4">
+          {GALLERY.map((g, i) => (
+            <Reveal
+              key={g.src}
+              delay={i % 3}
+              className={`overflow-hidden rounded-2xl ${g.h || ""}`}
+            >
+              <img
+                src={g.src}
+                alt={g.alt}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  LOCATION + ATTRACTIONS                                             */
 /* ------------------------------------------------------------------ */
 function Location() {
@@ -464,8 +516,8 @@ function Location() {
         <Reveal delay={1}>
           {/* https://www.booking.com/hotel/al/vila-verde-economic.html */}
           <img
-            src="https://picsum.photos/seed/vila57-neighborhood/1400/1700"
-            alt="A view of the Tirana neighborhood"
+            src="/images/364625410.jpg"
+            alt="Hotel Vila 57 facade on Rruga Kongresi i Manastirit"
             className="w-full h-[60vh] rounded-3xl object-cover"
           />
         </Reveal>
@@ -615,6 +667,7 @@ function ContactFooter() {
             <ul className="space-y-1.5">
               <li><a href="#stay">Rooms</a></li>
               <li><a href="#amenities">Amenities</a></li>
+              <li><a href="#gallery">Gallery</a></li>
               <li><a href="#location">Neighborhood</a></li>
               <li><a href="#map">Map</a></li>
             </ul>
@@ -649,6 +702,7 @@ export default function App() {
       <About />
       <Rooms />
       <Amenities />
+      <Gallery />
       <Location />
       <MapSection />
       <ContactFooter />
