@@ -149,9 +149,10 @@ function Nav() {
         </nav>
         <a
           href="#book"
-          className="px-5 py-2.5 rounded-full bg-stone-900 text-stone-50 text-sm hover:bg-[#b25c3a] transition"
+          className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#b25c3a] text-white text-sm font-medium hover:bg-stone-900 transition shadow-sm"
         >
-          Reserve
+          Reserve a Stay
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
         </a>
       </div>
     </header>
@@ -167,8 +168,8 @@ function Hero() {
       <div className="absolute inset-0">
         {/* https://www.booking.com/hotel/al/vila-verde-economic.html */}
         <img
-          src="/images/283956658.jpg"
-          alt="Hotel Vila 57 entrance lit up at night with the Bar Caffe Vila 57 sign"
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=80"
+          alt="A boutique hotel at golden hour"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/10 to-[#faf6f0]" />
@@ -554,7 +555,7 @@ function MapSection() {
           <iframe
             title="Hotel Vila 57 location on Google Maps"
             src={embed}
-            className="w-full h-[60vh] md:h-[70vh] border-0"
+            className="w-full h-[40vh] md:h-[50vh] border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
